@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@1,300&display=swap');
+
+#hello, #maintext {
+    font-family: "Open Sans", sans-serif;
+    font-size: 150%;
+}
+
+#messageDiv {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#maintext {
+    font-size: 200%;
+    color: white;
+}
+
+body {
+    background-color: grey;
+}

@@ -22,11 +22,12 @@ app.get('/quote', (req, res, next) => {
 });
 
 app.post('/ascii', (req, res, next) => {
+    console.log(req.body.text);
     request(
         {url: `https://artii.herokuapp.com/make?text=${req.body.text}`},
         (error, response, body) => {
             if (error) {
-                console.log('Error');
+                console.log(error);
             }
             res.send(body);
         }

@@ -27,10 +27,12 @@ const getQuote = async () => {
 const makeQuote = async () => {
     const messageDiv = document.getElementById('messageDiv');
     const p = document.createElement('p');
+    p.setAttribute('id', 'maintext');
     const text = await getQuote();
     p.innerHTML = text[0];
     messageDiv.appendChild(p);
-    const pre = document.createElement("pre").setAttribute('id', 'ascii');
+    const pre = document.createElement("pre");
+    pre.setAttribute('id', 'ascii');
     const asciiArt = text[1];
     pre.innerHTML = asciiArt;
     messageDiv.appendChild(pre);
