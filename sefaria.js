@@ -1,4 +1,6 @@
-const fetch = require('node-fetch');
+//const fetch = require('node-fetch');
+
+console.log('This is working.');
 
 const getBibleVerse = async () => {
     let chaptersLengths = "";
@@ -9,7 +11,6 @@ const getBibleVerse = async () => {
     const tanach = ['Genesis', 'Exodus', 'Leviticus', 'Numbers', 'Deuteronomy', 'Joshua', 'Judges', ' I Samuel', 'II Samuel', 'I Kings', 'II Kings', 'Isaiah', 'Jeremiah', 'Ezekiel', 'Hosea', 'Joel', 'Amos', 'Obadiah', 'Jonah', 'Micah', 'Nahum', 'Habakkuk', 'Zephaniah', 'Haggai', 'Zechariah', 'Malachi', 'Psalms', 'Proverbs', 'Job', 'Song of Songs', 'Ruth', 'Lamentations', 'Ecclesiastes', 'Esther', 'Daniel', 'Ezra',  'Nehemiah', 'I Chronicles', 'II Chronicles'];
     //2. Get a book randomly
     const book = tanach[Math.floor(Math.random() * tanach.length)];
-    console.log(book);
     
     //3. From the book, get the number of chapters of the book
     const chapters = await fetch(`https://www.sefaria.org/api/texts/${book}`);
@@ -29,9 +30,6 @@ const getBibleVerse = async () => {
     const finalVerseResponse = await fetch(`https://www.sefaria.org/api/texts/${book}.${randomChapter}`);
     if (finalVerseResponse.ok) {
         finalVerseJson = await finalVerseResponse.json();
-        console.log('This is the random chapter: '+randomChapter);
-        console.log('This is the random verse: '+randomVerse);
-        console.log(finalVerseJson.text[randomVerse]);
         return finalVerseJson.text[randomVerse];
 
     }
@@ -39,6 +37,4 @@ const getBibleVerse = async () => {
     return false;
     
 }
-
-getBibleVerse().then(response => console.log(response));
-module.exports = {getBibleVerse};
+export {getBibleVerse};
