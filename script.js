@@ -5,8 +5,7 @@ const getQuote = async () => {
     let inspiringQuote = "";
     let bibleQuote = "";
     let asciiArt = "";
-    const response = await fetch("https://zenquotes.io/api/quotes");
-    console.log(response);
+    const response = await fetch("/quote");
     if (response.ok) {
         const jsonResponse = await response.json();
          inspiringQuote  = jsonResponse[0].q;
@@ -15,8 +14,8 @@ const getQuote = async () => {
     bibleQuote = await getBibleVerse();
 
     const plusQuote = bibleQuote.split(" ").join("+");
-
-    const asciiResponse = await fetch(`https://artii.herokuapp.com/make?text=${plusQuote}`);
+    
+    const asciiResponse = await fetch('/ascii', {method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify({text: plusQuote})});
     if (asciiResponse.ok) {
         const jsonAscii = await asciiResponse.text();
         asciiArt = jsonAscii;
@@ -31,10 +30,9 @@ const makeQuote = async () => {
     const text = await getQuote();
     p.innerHTML = text[0];
     messageDiv.appendChild(p);
-    const pre = document.createElement("pre");
+    const pre = document.createElement("pre").setAttribute('id', 'ascii');
     const asciiArt = text[1];
     pre.innerHTML = asciiArt;
     messageDiv.appendChild(pre);
 }
-console.log('Hello, there!');
 makeQuote();
