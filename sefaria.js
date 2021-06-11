@@ -4,7 +4,6 @@ console.log('This is working.');
 
 const getBibleVerse = async () => {
     let chaptersLengths = "";
-    let versesLengths = "";
     let finalVerseJson = "";
     
     //1. Have the list of Tanach books
@@ -18,18 +17,20 @@ const getBibleVerse = async () => {
         const chaptersJson = await chapters.json();
         //Get number of chapters of book
         chaptersLengths = chaptersJson.length;
-        //Get number of verses from chapter using the length of the text array
-        versesLengths = chaptersJson.text.length;
     }
 
-    //Get the random values of chapter and verse
+    //Get the random values of chapter
     const randomChapter = Math.floor(Math.random() * chaptersLengths) + 1;
-    const randomVerse = Math.floor(Math.random() * versesLengths);
+    
 
     //Concatenate the result
     const finalVerseResponse = await fetch(`https://www.sefaria.org/api/texts/${book}.${randomChapter}`);
     if (finalVerseResponse.ok) {
         finalVerseJson = await finalVerseResponse.json();
+        //Get number of verses from chapter using the length of the text array
+        const versesLengths = finalVerseJson.text.length;
+        const randomVerse = Math.floor(Math.random() * versesLengths);
+        console.log(`Result:\nBook: ${book}, Chapter: ${randomChapter}, Verse: ${randomVerse}`);
         return finalVerseJson.text[randomVerse];
 
     }
