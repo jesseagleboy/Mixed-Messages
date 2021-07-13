@@ -1,13 +1,15 @@
-/*const fetch = require('node-fetch');*/
+//const fetch = require('node-fetch');
 /*const {getBibleVerse} = require('./sefaria.js');*/
 import {getBibleVerse} from './sefaria.js';
 const getQuote = async () => {
     let inspiringQuote = "";
     let bibleQuote = "";
     let asciiArt = "";
-    const response = await fetch("/quote");
+    const response = await fetch('https://zenquotes.io/api/quotes');
     if (response.ok) {
+        console.log(response);
         const jsonResponse = await response.json();
+        console.log(jsonResponse);
          inspiringQuote  = jsonResponse[0].q;
     }
     
@@ -15,7 +17,7 @@ const getQuote = async () => {
 
     const plusQuote = bibleQuote.split(" ").join("+");
     
-    const asciiResponse = await fetch('/ascii', {method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify({text: plusQuote})});
+    const asciiResponse = await fetch(`https://artii.herokuapp.com/make?text=${plusQuote}`);
     if (asciiResponse.ok) {
         const jsonAscii = await asciiResponse.text();
         asciiArt = jsonAscii;
