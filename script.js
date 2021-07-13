@@ -5,7 +5,7 @@ const getQuote = async () => {
     let inspiringQuote = "";
     let bibleQuote = "";
     let asciiArt = "";
-    const response = await fetch('https://www.zenquotes.io/api/quotes');
+    const response = await fetch('zenquotes.io/api/quotes');
     console.log(`This is the response: ${response}`);
     if (response.ok) {
         console.log(response);
