@@ -17,7 +17,7 @@ const getQuote = async () => {
 
     const plusQuote = bibleQuote.split(" ").join("+");
     
-    const asciiResponse = await fetch(`https://artii.herokuapp.com/make?text=${plusQuote}`);
+    const asciiResponse = await fetch(`make?text=${plusQuote}`);
     if (asciiResponse.ok) {
         const jsonAscii = await asciiResponse.text();
         asciiArt = jsonAscii;
