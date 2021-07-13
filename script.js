@@ -11,15 +11,15 @@ const getQuote = async () => {
         console.log(response);
         const jsonResponse = await response.json();
         console.log(jsonResponse);
-         inspiringQuote  = jsonResponse[0].q;
+         inspiringQuote  = jsonResponse[0].text;
+         console.log(inspiringQuote);
     }
     
     bibleQuote = await getBibleVerse();
 
     const plusQuote = bibleQuote.split(" ").join("+");
-    const test = 'Hello, World!';
     
-    const asciiResponse = await fetch(`https://www.artii.herokuapp.com/make?text=${test}`);
+    const asciiResponse = await fetch(`https://artii.herokuapp.com/make?text=${plusQuote}`);
     if (asciiResponse.ok) {
         const jsonAscii = await asciiResponse.text();
         asciiArt = jsonAscii;
