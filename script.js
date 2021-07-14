@@ -23,6 +23,8 @@ const getQuote = async () => {
     if (asciiResponse.ok) {
         const jsonAscii = await asciiResponse.text();
         asciiArt = jsonAscii;
+    } else {
+        asciiArt = 'Unavailable';
     }
 
     return [`${inspiringQuote} ${bibleQuote}`, asciiArt];
