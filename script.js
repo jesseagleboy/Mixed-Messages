@@ -6,9 +6,7 @@ const getQuote = async () => {
     let bibleQuote = "";
     let asciiArt = "";
     const response = await fetch('https://type.fit/api/quotes');
-    console.log(`This is the response: ${response}`);
     if (response.ok) {
-        console.log(response);
         const jsonResponse = await response.json();
         console.log(jsonResponse);
          inspiringQuote  = jsonResponse[0].text;
