@@ -12,9 +12,11 @@ app.use('/', express.static('.'), (req, res, next) => {
 });
 
 app.post('/asciiart', (req, res, next) => {
-    console.log(req.body);
-    res.send(`https://artii.herokuapp.com/make?text=${req.body}`);
+    
 
+    request(`https://artii.herokuapp.com/make?text=${req.body}`, (err, response, body) => {
+        res.send(body);
+    });
 
 });
 
