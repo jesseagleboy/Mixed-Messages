@@ -17,11 +17,12 @@ const getQuote = async () => {
 
     console.log('This is the bibleVerse' + " " + bibleQuote);
 
-    const plusQuote = bibleQuote.split(" ").join("+");
-    
+    const plusQuote = bibleQuote.split(" ").join("%20");
+    console.log(plusQuote);
     const asciiResponse = await fetch(`https://artii.herokuapp.com/make?text=${plusQuote}`);
     if (asciiResponse.ok) {
         const jsonAscii = await asciiResponse.text();
+        console.log(jsonAscii);
         asciiArt = jsonAscii;
     } else {
         asciiArt = 'Unavailable';
