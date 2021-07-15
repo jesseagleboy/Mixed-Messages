@@ -1,0 +1,33 @@
+{
+  "name": "mixed-messages",
+  "version": "1.0.0",
+  "description": "Codecademy Mixed Message project",
+  "main": "express.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "body": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "node-fetch": "^2.6.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesseagleboy/Mixed-Messages.git"
+  },
+  "keywords": [
+    "mixed",
+    "messages"
+  ],
+  "author": "Jesse Slomowitz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jesseagleboy/Mixed-Messages/issues"
+  },
+  "homepage": "https://github.com/jesseagleboy/Mixed-Messages#readme"
+}
