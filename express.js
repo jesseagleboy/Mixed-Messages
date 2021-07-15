@@ -22,6 +22,8 @@ app.post('/asciiart', (req, res, next) => {
 
 const PORT = process.env.PORT || 3002;
 
-app.listen(PORT);
+app.listen(PORT, () => {
+    console.log(`I am listening on PORT: ${PORT}.`);
+});
 
 
