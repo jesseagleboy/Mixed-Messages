@@ -9,7 +9,8 @@ const getQuote = async () => {
     if (response.ok) {
         const jsonResponse = await response.json();
         console.log(jsonResponse);
-         inspiringQuote  = jsonResponse[0].text;
+        const randomQuoteIndex = Math.floor(Math.random() * jsonResponse.length);
+         inspiringQuote  = jsonResponse[randomQuoteIndex].text;
          console.log(inspiringQuote);
     }
     
