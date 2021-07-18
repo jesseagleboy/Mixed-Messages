@@ -31,7 +31,7 @@ const getBibleVerse = async () => {
         const versesLengths = finalVerseJson.text.length;
         const randomVerse = Math.floor(Math.random() * versesLengths);
         console.log(`Result:\nBook: ${book}, Chapter: ${randomChapter}, Verse: ${randomVerse}`);
-        return finalVerseJson.text[randomVerse];
+        return [book, randomChapter, finalVerseJson.text[randomVerse]];
 
     }
     

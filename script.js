@@ -3,6 +3,7 @@
 import {getBibleVerse} from './sefaria.js';
 const getQuote = async () => {
     let inspiringQuote = "";
+    let inspiringAuthor = "";
     let bibleQuote = "";
     let asciiArt = "";
     const response = await fetch('https://type.fit/api/quotes');
@@ -11,15 +12,17 @@ const getQuote = async () => {
         console.log(jsonResponse);
         const randomQuoteIndex = Math.floor(Math.random() * jsonResponse.length);
          inspiringQuote  = jsonResponse[randomQuoteIndex].text;
-         console.log(inspiringQuote);
+         inspiringAuthor = jsonResponse[randomQuoteIndex].author;
+         console.log(inspiringAuthor);
     }
     
     bibleQuote = await getBibleVerse();
 
-    console.log('This is the bibleVerse' + " " + bibleQuote);
+    console.log('This is the bibleVerse' + " " + bibleQuote[2]);
 
-    const plusQuote = bibleQuote.split(" ").join(' ');
+    const plusQuote = bibleQuote[2].split(" ").join(' ');
     console.log(plusQuote);
+    
     const asciiResponse = await fetch('/asciiart', {method: 'POST', body: plusQuote, headers: {'Content-type': 'text/plain'} });
     if (asciiResponse.ok) {
         const jsonAscii = await asciiResponse.text();
@@ -29,7 +32,7 @@ const getQuote = async () => {
         asciiArt = 'Unavailable';
     }
 
-    return [`${inspiringQuote} ${bibleQuote}`, asciiArt];
+    return [inspiringQuote, bibleQuote, asciiArt, inspiringAuthor];
 }
 
 const makeQuote = async () => {
@@ -37,12 +40,21 @@ const makeQuote = async () => {
     const p = document.createElement('p');
     p.setAttribute('id', 'maintext');
     const text = await getQuote();
-    p.innerHTML = text[0];
+    p.innerHTML = text[0] + " " + text[1][2];
+    console.log(p.innerText);
     messageDiv.appendChild(p);
     const pre = document.createElement("pre");
     pre.setAttribute('id', 'ascii');
-    const asciiArt = text[1];
+    const asciiArt = text[2];
     pre.innerHTML = asciiArt;
     messageDiv.appendChild(pre);
+
+
+    //footer section
+    const inspFooter = document.getElementById('inspirationsource');
+    inspFooter.innerText = "Inspirational Author: " + text[3];
+    const bibleFooter = document.getElementById('biblesource');
+    bibleFooter.innerText = "Scripture Source: " + text[1][0] + " " + text[1][1]
+
 }
 makeQuote();
