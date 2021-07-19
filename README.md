@@ -3,7 +3,7 @@
 Codecademy project to create a mixed messages using three different quotes. 
 
 # My sources:
-1. Inspiration Quote: https://zenquotes.io/
+1. Inspiration Quote: https://type.fit/api/quotes
 2. Biblical Verse: sefaria.org
 3. ASCII Representation: https://artii.herokuapp.com/
 
