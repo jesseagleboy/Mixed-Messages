@@ -17,3 +17,5 @@ getBibleVerse steps are as follows:
   5. Return the value of number of verses in chapter based on length of text array.
   6. With book, chapter, and number of verses in a chapter, return final quote.
  
+ # Additional Info:
+ Initially to be just a script, I decided to turn it into a webpage. Therefore, there is a server script that is to be executed to use this. However, "fetch-node" should work if one is just using the script.js.
