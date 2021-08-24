@@ -4,7 +4,7 @@ Codecademy project to create a mixed messages using three different quotes.
 
 # My sources:
 1. Inspiration Quote: https://type.fit/api/quotes
-2. Biblical Verse: sefaria.org
+2. Biblical Verse: https://github.com/Sefaria/Sefaria-Project/wiki/API-Documentation
 3. ASCII Representation: https://artii.herokuapp.com/
 
 <p>The main script is script.js. Sefaria.js is a function to get a random Bible verse.</p>
